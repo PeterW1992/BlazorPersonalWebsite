@@ -19,7 +19,6 @@ namespace BlazorPersonalWebsite.Pages
         ISoftwareProjectRepository SoftwareProjectRepo { get; set; }
 
         private SoftwareProject project;
-        private bool _firstRender;
 
         protected override async Task OnInitializedAsync()
         {
