@@ -1,0 +1,31 @@
+﻿@page "/softwareprojects"
+
+@using BlazorPersonalWebsite.Models
+@using BlazorPersonalWebsite.Models.Interfaces
+@inject ISoftwareProjectRepository SoftwareProjectRepo
+
+<h3>Software Projects</h3>
+
+<div class="projectList">
+    @foreach (var project in projects.OrderByDescending(p => p.DateCreated))
+    {
+        <div class="projectListItem">
+            <a href="softwareProject?projectRef=@project.ProjectRef">
+                <label class="projectName">@project.Name - @project.DateCreated.ToString("dd/MM/yyyy")</label>
+                <div class="projectListImageContainer">
+                    <img class="projectListImage" src="@project.Images[0]" />
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+
+@code {
+    private List<SoftwareProject> projects;
+
+    protected override async Task OnInitializedAsync()
+    {
+        projects = SoftwareProjectRepo.ListSoftwareProjects();
+    }
+}

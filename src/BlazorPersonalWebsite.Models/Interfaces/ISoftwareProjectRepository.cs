@@ -7,5 +7,7 @@ namespace BlazorPersonalWebsite.Models.Interfaces
     public interface ISoftwareProjectRepository
     {
         public List<SoftwareProject> ListSoftwareProjects();
+
+        public SoftwareProject GetSoftwareProject(string uniqueRef);
     }
 }

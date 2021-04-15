@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BlazorPersonalWebsite.Models
 {
@@ -6,10 +7,14 @@ namespace BlazorPersonalWebsite.Models
     {
         public int Id { get; set; }
 
+        public string ProjectRef { get; set; }
+
         public string Name { get; set; }
 
         public string Description { get; set; }
 
         public DateTime DateCreated { get; set; }
+
+        public List<string> Images { get; set; }
     }
 }
