@@ -11,11 +11,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\src\BlazorPersonalWebsite.DataAccess\BlazorPersonalWebsite.DataAccess.csproj" />
     <ProjectReference Include="..\src\BlazorPersonalWebsite.Models\BlazorPersonalWebsite.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\woodworking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

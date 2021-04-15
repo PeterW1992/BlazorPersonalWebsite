@@ -1,6 +1,8 @@
 ﻿@page "/softwareprojects"
 
 @using BlazorPersonalWebsite.Models
+@using BlazorPersonalWebsite.Models.Interfaces
+@inject ISoftwareProjectRepository SoftwareProjectRepo 
 
 <h3>Software Projects</h3>
 
@@ -13,32 +15,10 @@
 </ul>
 
 @code {
-    private List<SoftwareProject> projects = new List<SoftwareProject>
-    {
-        new SoftwareProject
-        {
-            Id = 1,
-            Name = "Runescape Calculator",
-            DateCreated = DateTime.Parse("2013/01/01")
-        },
-        new SoftwareProject
-        {
-            Id = 2,
-            Name = "University Project - E-Commere Project",
-            DateCreated = DateTime.Parse("2015/01/01")
-        },
-        new SoftwareProject
-        {
-            Id = 3,
-            Name = "Loyalty Pro Android App",
-            DateCreated = DateTime.Parse("2016/10/01")
+    private List<SoftwareProject> projects;
 
-        },
-        new SoftwareProject
-        {
-            Id = 4,
-            Name = "University Dissertation - GPS Logger",
-            DateCreated = DateTime.Parse("2017/05/01")
-        }
-    };
+    protected override async Task OnInitializedAsync()
+    {
+        projects = SoftwareProjectRepo.ListSoftwareProjects();
+    }
 }

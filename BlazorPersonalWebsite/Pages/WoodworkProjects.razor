@@ -1,43 +1,24 @@
 ﻿@page "/woodworkprojects"
 
 @using BlazorPersonalWebsite.Models
+@using BlazorPersonalWebsite.Models.Interfaces
+@inject IWoodworkProjectRepository WoodworkProjectRepo
 
 <h3>Woodwork Projects</h3>
 
 <ul>
     @foreach (var project in projects.OrderByDescending(p => p.DateCreated))
     {
-    <li>@project.Name - @project.DateCreated.ToString("dd/MM/yyyy")</li>
-        
+        <li>@project.Name - @project.DateCreated.ToString("dd/MM/yyyy")</li>
+
     }
 </ul>
 
 @code {
-    private List<WoodworkProject> projects = new List<WoodworkProject>
+    private List<WoodworkProject> projects;
+
+    protected override async Task OnInitializedAsync()
     {
-        new WoodworkProject
-        {
-            Id = 1,
-            Name = "Side Gate",
-            DateCreated = DateTime.Parse("2017/07/05")
-        },
-        new WoodworkProject
-        {
-            Id = 2,
-            Name = "Workbench",
-            DateCreated = DateTime.Parse("2017/08/21")
-        },
-        new WoodworkProject
-        {
-            Id = 3,
-            Name = "Raised Garden bed (Pair)",
-            DateCreated = DateTime.Parse("2020/05/01")
-        },
-        new WoodworkProject
-        {
-            Id = 4,
-            Name = "Raised Garden bed (Large)",
-            DateCreated = DateTime.Parse("2020/09/01")
-        }
-    };
+        projects = WoodworkProjectRepo.ListWoodworkProjects();
+    }
 }
