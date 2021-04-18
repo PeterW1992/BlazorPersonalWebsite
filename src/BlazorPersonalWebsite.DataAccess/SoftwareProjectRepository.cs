@@ -14,13 +14,30 @@ namespace BlazorPersonalWebsite.DataAccess
                     Id = 1,
                     Name = "Runescape Calculator",
                     ProjectRef ="rsCalc",
+                    Description = "Skill action calculator for video game Runescape",
                     DateCreated = DateTime.Parse("2013/01/01"),
-                    Images = new List<string>
+                    Images = new List<Image>
                     {
-                        ".\\images\\software-images\\rs-calculator\\1.png",
-                        ".\\images\\software-images\\rs-calculator\\2.png",
-                        ".\\images\\software-images\\rs-calculator\\3.png",
-                        ".\\images\\software-images\\rs-calculator\\4.png",
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\rs-calculator\\1.png",
+                            Description = "Agility skill calculator"
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\rs-calculator\\2.png",
+                            Description = "Fishing skill calculator"
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\rs-calculator\\3.png",
+                            Description = "Dropdown showing which skills are included"
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\rs-calculator\\4.png",
+                            Description = "Dropdown showing skill subcategories"
+                        }
                     }
                 },
                 new SoftwareProject
@@ -29,14 +46,32 @@ namespace BlazorPersonalWebsite.DataAccess
                     Name = "University Project - E-Commere Project",
                     ProjectRef ="uniEcom",
                     DateCreated = DateTime.Parse("2015/01/01"),
-                    Images = new List<string>
+                    Images = new List<Image>
                     {
-                        ".\\images\\software-images\\ecommerce-site\\1.png",
-                        ".\\images\\software-images\\ecommerce-site\\2.png",
-                        ".\\images\\software-images\\ecommerce-site\\3.png",
-                        ".\\images\\software-images\\ecommerce-site\\4.png",
-                        ".\\images\\software-images\\ecommerce-site\\5.png",
-                        ".\\images\\software-images\\ecommerce-site\\6.png",
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\ecommerce-site\\1.png",
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\ecommerce-site\\2.png",
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\ecommerce-site\\3.png",
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\ecommerce-site\\4.png",
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\ecommerce-site\\5.png",
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\ecommerce-site\\6.png",
+                        },
                     }
                 },
                 new SoftwareProject
@@ -45,14 +80,32 @@ namespace BlazorPersonalWebsite.DataAccess
                     Name = "Loyalty Pro Android App",
                     ProjectRef ="loyaltyProApp",
                     DateCreated = DateTime.Parse("2016/10/01"),
-                    Images = new List<string>
+                    Images = new List<Image>
                     {
-                        ".\\images\\software-images\\loyalty-pro-app\\1.png",
-                        ".\\images\\software-images\\loyalty-pro-app\\2.png",
-                        ".\\images\\software-images\\loyalty-pro-app\\3.png",
-                        ".\\images\\software-images\\loyalty-pro-app\\4.png",
-                        ".\\images\\software-images\\loyalty-pro-app\\5.png",
-                        ".\\images\\software-images\\loyalty-pro-app\\6.png",
+                         new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\loyalty-pro-app\\1.png"
+                        },
+                          new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\loyalty-pro-app\\2.png"
+                        },
+                           new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\loyalty-pro-app\\3.png"
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\loyalty-pro-app\\4.png"
+                        }, 
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\loyalty-pro-app\\5.png"
+                        }, 
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\loyalty-pro-app\\6.png"
+                        }
                     }
                 },
                 new SoftwareProject
@@ -61,13 +114,28 @@ namespace BlazorPersonalWebsite.DataAccess
                     Name = "University Dissertation - GPS Logger",
                     ProjectRef ="uniDis",
                     DateCreated = DateTime.Parse("2017/05/01"),
-                    Images = new List<string>
+                    Images = new List<Image>
                     {
-                        ".\\images\\software-images\\gps-logger\\1.png",
-                        ".\\images\\software-images\\gps-logger\\2.png",
-                        ".\\images\\software-images\\gps-logger\\3.png",
-                        ".\\images\\software-images\\gps-logger\\4.png",
-                        ".\\images\\software-images\\gps-logger\\5.png",
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\gps-logger\\1.png",
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\gps-logger\\2.png",
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\gps-logger\\3.png",
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\gps-logger\\4.png",
+                        },
+                        new Image
+                        {
+                            ImageUrl = ".\\images\\software-images\\gps-logger\\5.png",
+                        }
                     }
                 }
             };

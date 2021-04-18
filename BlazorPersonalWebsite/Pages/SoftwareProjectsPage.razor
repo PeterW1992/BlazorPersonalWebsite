@@ -11,9 +11,9 @@
     {
         <div class="projectListItem">
             <a href="softwareProject?projectRef=@project.ProjectRef">
-                <label class="projectName">@project.Name - @project.DateCreated.ToString("dd/MM/yyyy")</label>
+                <label class="projectName">@project.Name</label>
                 <div class="projectListImageContainer">
-                    <img class="projectListImage" src="@project.Images[0]" />
+                    <img class="projectListImage" src="@project.Images[0].ImageUrl" />
                 </div>
             </a>
         </div>
