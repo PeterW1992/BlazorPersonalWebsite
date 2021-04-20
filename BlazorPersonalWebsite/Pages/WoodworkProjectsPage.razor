@@ -6,22 +6,22 @@
 
 <h3>Woodwork Projects</h3>
 
-<div class="projectList">
-    @foreach (var project in projects.OrderByDescending(p => p.DateCreated))
-    {
-        <div class="projectListItem">
-            <a href="woodworkProject?projectRef=@project.ProjectRef">
-                <label class="projectName">@project.Name</label>
-                <div class="projectListImageContainer">
+    <div class="row">
+        @foreach (var project in projects)
+        {
+        <div class="col-md-3">
+            <label class="projectName">@project.Name</label>
+            <div class="thumbnail">
+                <a href="@image.ImageUrl">
                     @if (project.Images != null && project.Images.Count > 0)
                     {
-                        <img class="projectListImage" src="@project.Images[0].ImageUrl" />
+                        <img src="@project.Images[0].ImageUrl" alt="@project.Images[0].Description" style="width:100%" />
                     }
-                </div>
-            </a>
+                    </a>
+            </div>
         </div>
-    }
-</div>
+        }
+    </div>
 
 @code {
     private List<WoodworkProject> projects;

@@ -13,7 +13,10 @@
             <a href="softwareProject?projectRef=@project.ProjectRef">
                 <label class="projectName">@project.Name</label>
                 <div class="projectListImageContainer">
-                    <img class="projectListImage" src="@project.Images[0].ImageUrl" />
+                    @if (project.Images != null && project.Images.Count > 0)
+                    {
+                        <img class="projectListImage" src="@project.Images[0].ImageUrl" />
+                    }
                 </div>
             </a>
         </div>

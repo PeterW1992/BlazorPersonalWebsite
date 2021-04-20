@@ -1,0 +1,17 @@
+﻿.projectList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.projectListItem {
+    flex: 1;
+}
+
+.projectListImage {
+    max-width: 250px;
+}
+
+.projectListImageContainer {
+
+}

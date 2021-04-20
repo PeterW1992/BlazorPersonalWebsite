@@ -20,7 +20,7 @@ namespace BlazorPersonalWebsite.DataAccess
                         new Image
                         {
                             Description = "Unhung gate",
-                            ImageUrl = ".\\images\\woodwork-images\\side-gate\\sidegate-unhung.png"
+                            ImageUrl = "images\\woodwork-images\\side-gate\\sidegate-unhung.jpg"
                         }
                     }
                 },
@@ -35,7 +35,7 @@ namespace BlazorPersonalWebsite.DataAccess
                         new Image
                         {
                             Description = "Unfinished workbench",
-                            ImageUrl = ".\\images\\woodwork-images\\workbench\\workbench-unfinished.png"
+                            ImageUrl = "images\\woodwork-images\\workbench\\workbench-unfinished.jpg"
                         }
                     }
                 },
@@ -50,7 +50,7 @@ namespace BlazorPersonalWebsite.DataAccess
                         new Image
                         {
                             Description = "Unfinished workbench",
-                            ImageUrl = ".\\images\\woodwork-images\\bird-table\\bird-table.png"
+                            ImageUrl = "images\\woodwork-images\\bird-table\\bird-table.jpg"
                         }
                     }
                 },
@@ -60,14 +60,14 @@ namespace BlazorPersonalWebsite.DataAccess
                     Name = "Raised Garden bed (Small)",
                     ProjectRef = "raisedGardenBendSmall",
                     DateCreated = DateTime.Parse("2020/05/01"),
-                    Images = new List<Image>
-                    {
-                        new Image
-                        {
-                            Description = "Unhung gate",
-                            ImageUrl = ".\\images\\project-images\\side-gate\\sidegate-unhung.png"
-                        }
-                    }
+                    //Images = new List<Image>
+                    //{
+                    //    new Image
+                    //    {
+                    //        Description = "Unhung gate",
+                    //        ImageUrl = "images\\project-images\\side-gate\\sidegate-unhung.jpg"
+                    //    }
+                    //}
                 },
                 new WoodworkProject
                 {
@@ -75,14 +75,14 @@ namespace BlazorPersonalWebsite.DataAccess
                     Name = "Raised Garden bed (Large)",
                     ProjectRef = "raisedGardenBendLarge",
                     DateCreated = DateTime.Parse("2020/09/01"),
-                    Images = new List<Image>
-                    {
-                        new Image
-                        {
-                            Description = "Unhung gate",
-                            ImageUrl = ".\\images\\project-images\\side-gate\\sidegate-unhung.png"
-                        }
-                    }
+                    //Images = new List<Image>
+                    //{
+                    //    new Image
+                    //    {
+                    //        Description = "Unhung gate",
+                    //        ImageUrl = "images\\project-images\\side-gate\\sidegate-unhung.jpg"
+                    //    }
+                    //}
                 }
             };
 
