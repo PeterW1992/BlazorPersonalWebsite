@@ -1,0 +1,38 @@
+﻿@page "/woodworkproject"
+
+@if (project == null)
+{
+    <label>Error display woodwork project!</label>
+}
+else
+{
+    <div class="container">
+
+        <div>
+            <h2>@project.Name</h2>
+        </div>
+        <div class="row">
+            @foreach (var image in project.Images)
+            {
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="@image.ImageUrl">
+                            <img src="@image.ImageUrl" alt="@image.Description" style="width:100%">
+                            <div class="caption">
+                                <p>@image.Description</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div>
+            <h3>Description</h3>
+            <p>
+                @project.Description
+            </p>
+        </div>
+
+    </div>
+}

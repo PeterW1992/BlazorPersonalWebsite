@@ -7,5 +7,8 @@ namespace BlazorPersonalWebsite.Models.Interfaces
     public interface IWoodworkProjectRepository
     {
         public List<WoodworkProject> ListWoodworkProjects();
+
+        public WoodworkProject GetWoodworkProjects(string uniqueRef);
+
     }
 }

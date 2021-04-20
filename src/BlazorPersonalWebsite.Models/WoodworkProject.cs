@@ -15,5 +15,7 @@ namespace BlazorPersonalWebsite.Models
         public string Description { get; set; }
 
         public DateTime DateCreated { get; set; }
+
+        public List<Image> Images { get; set; }
     }
 }
