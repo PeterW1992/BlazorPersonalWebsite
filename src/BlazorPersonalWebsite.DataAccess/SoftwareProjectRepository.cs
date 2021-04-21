@@ -2,11 +2,16 @@
 using BlazorPersonalWebsite.Models.Interfaces;
 using System;
 using System.Collections.Generic;
+using BlazorPersonalWebsite.EntityFramework;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace BlazorPersonalWebsite.DataAccess
 {
     public class SoftwareProjectRepository : ISoftwareProjectRepository
     {
+        WebsiteContext _dbContext;
+
         private List<SoftwareProject> _softwareProjects = new List<SoftwareProject>
             {
                 new SoftwareProject
@@ -140,14 +145,21 @@ namespace BlazorPersonalWebsite.DataAccess
                 }
             };
 
-        public SoftwareProject GetSoftwareProject(string projectRef)
+        public SoftwareProjectRepository(WebsiteContext dbContext)
         {
-            return this._softwareProjects.Find(s => s.ProjectRef == projectRef);
+            _dbContext = dbContext;
         }
 
-        public List<SoftwareProject> ListSoftwareProjects()
+        public async Task<SoftwareProject> GetSoftwareProjectAsync(string projectRef)
         {
-            return _softwareProjects;
+            return await this._dbContext.SoftwareProjects.AsNoTracking().SingleOrDefaultAsync(sp => sp.ProjectRef == projectRef);
+        }
+
+        public async Task<List<SoftwareProject>> ListSoftwareProjectsAsync()
+        {
+            return await this._dbContext.SoftwareProjects.AsNoTracking().ToListAsync();
+
+            //return _softwareProjects;
         }
     }
 }

@@ -1,0 +1,27 @@
+﻿<h3>Add Job Application</h3>
+
+<EditForm Model="@jobApplication">
+
+    <div>
+        <label>
+            Job Title:
+            <InputText id="jobTitle" @bind-Value="jobApplication.Title"></InputText>
+        </label>
+    </div>
+    
+    <div>
+        <label>
+            Description:
+            <InputText id="jobDescription" @bind-Value="jobApplication.Description"></InputText>
+        </label>
+    </div>
+    
+    <div>
+        <label>
+            Date Applied:
+            <InputDate id="jobAppliedDate" @bind-Value="jobApplication.DateAppliedFor"></InputDate>
+        </label>
+    </div>
+
+    <button type="submit" @onclick="AddNewJobApplication">Add</button>
+</EditForm>

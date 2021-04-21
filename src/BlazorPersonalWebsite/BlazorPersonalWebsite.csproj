@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\BlazorPersonalWebsite.DataAccess\BlazorPersonalWebsite.DataAccess.csproj" />
-    <ProjectReference Include="..\src\BlazorPersonalWebsite.Models\BlazorPersonalWebsite.Models.csproj" />
+    <ProjectReference Include="..\BlazorPersonalWebsite.DataAccess\BlazorPersonalWebsite.DataAccess.csproj" />
+    <ProjectReference Include="..\BlazorPersonalWebsite.Models\BlazorPersonalWebsite.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\images\woodworking.png">
+    <None Include="wwwroot\images\icons\woodworking.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -90,7 +90,7 @@
     <Content Update="wwwroot\images\software-images\rs-calculator\4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\software-project.png">
+    <Content Update="wwwroot\images\icons\software-project.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\images\woodwork-images\bird-table\bird-table.jpg">

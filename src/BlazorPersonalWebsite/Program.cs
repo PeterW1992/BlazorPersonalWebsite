@@ -18,6 +18,7 @@ namespace BlazorPersonalWebsite
 
             builder.Services
                 .AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
+                .AddSingleton<IJobApplicationRepository, JobApplicationRepository>()
                 .AddSingleton<ISoftwareProjectRepository, SoftwareProjectRepository>()
                 .AddSingleton<IWoodworkProjectRepository, WoodworkProjectRepository>();
 
