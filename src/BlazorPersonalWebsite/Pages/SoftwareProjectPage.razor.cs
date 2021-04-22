@@ -29,7 +29,7 @@ namespace BlazorPersonalWebsite.Pages
 
             if (projectRef != null)
             {
-                project = SoftwareProjectRepo.GetSoftwareProject(projectRef);
+                project = await SoftwareProjectRepo.GetSoftwareProjectAsync(projectRef);
             }
 
         }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorPersonalWebsite.EntityFramework.Migrations
 {
     [DbContext(typeof(WebsiteContext))]
-    [Migration("20210421180205_Initial")]
+    [Migration("20210422204642_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,29 +20,6 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("BlazorPersonalWebsite.Models.Image", b =>
-                {
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SoftwareProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WoodworkProjectId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ImageUrl");
-
-                    b.HasIndex("SoftwareProjectId");
-
-                    b.HasIndex("WoodworkProjectId");
-
-                    b.ToTable("Image");
-                });
 
             modelBuilder.Entity("BlazorPersonalWebsite.Models.JobApplication", b =>
                 {
@@ -93,6 +70,88 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SoftwareProject");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DateCreated = new DateTime(2013, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Skill action calculator for video game Runescape",
+                            Name = "Runescape Calculator",
+                            ProjectRef = "rsCalc"
+                        });
+                });
+
+            modelBuilder.Entity("BlazorPersonalWebsite.Models.SoftwareProjectImage", b =>
+                {
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SoftwareProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SoftwareProjectId1")
+                        .HasColumnType("int");
+
+                    b.HasKey("ImageUrl");
+
+                    b.HasIndex("SoftwareProjectId");
+
+                    b.HasIndex("SoftwareProjectId1");
+
+                    b.ToTable("SoftwareProjectImage");
+
+                    b.HasData(
+                        new
+                        {
+                            ImageUrl = "images\\software-images\\rs-calculator\\1.png",
+                            Description = "Agility skill calculator",
+                            SoftwareProjectId = 1
+                        },
+                        new
+                        {
+                            ImageUrl = "images\\software-images\\rs-calculator\\2.png",
+                            Description = "Fishing skill calculator",
+                            SoftwareProjectId = 1
+                        },
+                        new
+                        {
+                            ImageUrl = "images\\software-images\\rs-calculator\\3.png",
+                            Description = "Dropdown showing which skills are included",
+                            SoftwareProjectId = 1
+                        },
+                        new
+                        {
+                            ImageUrl = "images\\software-images\\rs-calculator\\4.png",
+                            Description = "Dropdown showing skill subcategories",
+                            SoftwareProjectId = 1
+                        });
+                });
+
+            modelBuilder.Entity("BlazorPersonalWebsite.Models.WoodworkImage", b =>
+                {
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("WoodworkProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WoodworkProjectId1")
+                        .HasColumnType("int");
+
+                    b.HasKey("ImageUrl");
+
+                    b.HasIndex("WoodworkProjectId");
+
+                    b.HasIndex("WoodworkProjectId1");
+
+                    b.ToTable("WoodworkImage");
                 });
 
             modelBuilder.Entity("BlazorPersonalWebsite.Models.WoodworkProject", b =>
@@ -119,15 +178,30 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                     b.ToTable("WoodworkProject");
                 });
 
-            modelBuilder.Entity("BlazorPersonalWebsite.Models.Image", b =>
+            modelBuilder.Entity("BlazorPersonalWebsite.Models.SoftwareProjectImage", b =>
                 {
                     b.HasOne("BlazorPersonalWebsite.Models.SoftwareProject", null)
+                        .WithMany()
+                        .HasForeignKey("SoftwareProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BlazorPersonalWebsite.Models.SoftwareProject", null)
                         .WithMany("Images")
-                        .HasForeignKey("SoftwareProjectId");
+                        .HasForeignKey("SoftwareProjectId1");
+                });
+
+            modelBuilder.Entity("BlazorPersonalWebsite.Models.WoodworkImage", b =>
+                {
+                    b.HasOne("BlazorPersonalWebsite.Models.WoodworkProject", null)
+                        .WithMany()
+                        .HasForeignKey("WoodworkProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("BlazorPersonalWebsite.Models.WoodworkProject", null)
                         .WithMany("Images")
-                        .HasForeignKey("WoodworkProjectId");
+                        .HasForeignKey("WoodworkProjectId1");
                 });
 
             modelBuilder.Entity("BlazorPersonalWebsite.Models.SoftwareProject", b =>

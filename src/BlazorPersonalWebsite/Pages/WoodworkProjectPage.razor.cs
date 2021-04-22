@@ -29,7 +29,7 @@ namespace BlazorPersonalWebsite.Pages
 
             if (projectRef != null)
             {
-                project = WoodworkProjectRepo.GetWoodworkProjects(projectRef);
+                project = await WoodworkProjectRepo.GetWoodworkProjectAsync(projectRef);
             }
 
         }

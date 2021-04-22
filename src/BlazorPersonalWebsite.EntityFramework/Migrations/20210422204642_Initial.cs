@@ -57,49 +57,104 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Image",
+                name: "SoftwareProjectImage",
                 columns: table => new
                 {
                     ImageUrl = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SoftwareProjectId = table.Column<int>(type: "int", nullable: true),
-                    WoodworkProjectId = table.Column<int>(type: "int", nullable: true)
+                    SoftwareProjectId = table.Column<int>(type: "int", nullable: false),
+                    SoftwareProjectId1 = table.Column<int>(type: "int", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Image", x => x.ImageUrl);
+                    table.PrimaryKey("PK_SoftwareProjectImage", x => x.ImageUrl);
                     table.ForeignKey(
-                        name: "FK_Image_SoftwareProject_SoftwareProjectId",
+                        name: "FK_SoftwareProjectImage_SoftwareProject_SoftwareProjectId",
                         column: x => x.SoftwareProjectId,
                         principalTable: "SoftwareProject",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Image_WoodworkProject_WoodworkProjectId",
+                        name: "FK_SoftwareProjectImage_SoftwareProject_SoftwareProjectId1",
+                        column: x => x.SoftwareProjectId1,
+                        principalTable: "SoftwareProject",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WoodworkImage",
+                columns: table => new
+                {
+                    ImageUrl = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    WoodworkProjectId = table.Column<int>(type: "int", nullable: false),
+                    WoodworkProjectId1 = table.Column<int>(type: "int", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WoodworkImage", x => x.ImageUrl);
+                    table.ForeignKey(
+                        name: "FK_WoodworkImage_WoodworkProject_WoodworkProjectId",
                         column: x => x.WoodworkProjectId,
+                        principalTable: "WoodworkProject",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_WoodworkImage_WoodworkProject_WoodworkProjectId1",
+                        column: x => x.WoodworkProjectId1,
                         principalTable: "WoodworkProject",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "SoftwareProject",
+                columns: new[] { "Id", "DateCreated", "Description", "Name", "ProjectRef" },
+                values: new object[] { 1, new DateTime(2013, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Skill action calculator for video game Runescape", "Runescape Calculator", "rsCalc" });
+
+            migrationBuilder.InsertData(
+                table: "SoftwareProjectImage",
+                columns: new[] { "ImageUrl", "Description", "SoftwareProjectId", "SoftwareProjectId1" },
+                values: new object[,]
+                {
+                    { "images\\software-images\\rs-calculator\\1.png", "Agility skill calculator", 1, null },
+                    { "images\\software-images\\rs-calculator\\2.png", "Fishing skill calculator", 1, null },
+                    { "images\\software-images\\rs-calculator\\3.png", "Dropdown showing which skills are included", 1, null },
+                    { "images\\software-images\\rs-calculator\\4.png", "Dropdown showing skill subcategories", 1, null }
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Image_SoftwareProjectId",
-                table: "Image",
+                name: "IX_SoftwareProjectImage_SoftwareProjectId",
+                table: "SoftwareProjectImage",
                 column: "SoftwareProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Image_WoodworkProjectId",
-                table: "Image",
+                name: "IX_SoftwareProjectImage_SoftwareProjectId1",
+                table: "SoftwareProjectImage",
+                column: "SoftwareProjectId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WoodworkImage_WoodworkProjectId",
+                table: "WoodworkImage",
                 column: "WoodworkProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WoodworkImage_WoodworkProjectId1",
+                table: "WoodworkImage",
+                column: "WoodworkProjectId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Image");
+                name: "JobApplication");
 
             migrationBuilder.DropTable(
-                name: "JobApplication");
+                name: "SoftwareProjectImage");
+
+            migrationBuilder.DropTable(
+                name: "WoodworkImage");
 
             migrationBuilder.DropTable(
                 name: "SoftwareProject");

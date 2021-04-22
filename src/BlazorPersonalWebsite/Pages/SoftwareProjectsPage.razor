@@ -29,6 +29,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        projects = SoftwareProjectRepo.ListSoftwareProjects();
+        projects = await SoftwareProjectRepo.ListSoftwareProjectsAsync();
     }
 }

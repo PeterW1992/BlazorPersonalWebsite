@@ -29,6 +29,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        projects = WoodworkProjectRepo.ListWoodworkProjects();
+        projects = await WoodworkProjectRepo.ListWoodworkProjectsAsync();
     }
 }

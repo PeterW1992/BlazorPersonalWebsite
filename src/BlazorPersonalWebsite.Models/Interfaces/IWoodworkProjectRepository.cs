@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BlazorPersonalWebsite.Models.Interfaces
 {
     public interface IWoodworkProjectRepository
     {
-        public List<WoodworkProject> ListWoodworkProjects();
+        public Task<List<WoodworkProject>> ListWoodworkProjectsAsync();
 
-        public WoodworkProject GetWoodworkProjects(string uniqueRef);
+        public Task<WoodworkProject> GetWoodworkProjectAsync(string uniqueRef);
 
     }
 }
