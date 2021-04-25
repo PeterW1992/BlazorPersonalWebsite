@@ -7,12 +7,11 @@ namespace BlazorPersonalWebsite.EntityFramework
 {
     public class WebsiteContext : DbContext
     {
+        public DbSet<JobApplication> JobApplications { get; set; }
 
-        public DbSet<JobApplication> JobApplications;
+        public DbSet<SoftwareProject> SoftwareProjects { get; set; }
 
-        public DbSet<SoftwareProject> SoftwareProjects;
-
-        public DbSet<WoodworkProject> WoodworkProjects;
+        public DbSet<WoodworkProject> WoodworkProjects { get; set; }
 
         public WebsiteContext(DbContextOptions<WebsiteContext> options) : base(options)
         {
@@ -183,105 +182,105 @@ namespace BlazorPersonalWebsite.EntityFramework
                         Description = "Skill action calculator for video game Runescape",
                         DateCreated = DateTime.Parse("2013/01/01"),
                     }
-                //new SoftwareProject
-                //{
-                //    Id = 2,
-                //    Name = "University Project - E-Commere Project",
-                //    ProjectRef = "uniEcom",
-                //    DateCreated = DateTime.Parse("2015/01/01"),
-                //    Images = new List<SoftwareProjectImage>
-                //    {
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\ecommerce-site\\1.png",
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\ecommerce-site\\2.png",
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\ecommerce-site\\3.png",
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\ecommerce-site\\4.png",
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\ecommerce-site\\5.png",
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\ecommerce-site\\6.png",
-                //        },
-                //    }
-                //},
-                //new SoftwareProject
-                //{
-                //    Id = 3,
-                //    Name = "Loyalty Pro Android App",
-                //    ProjectRef = "loyaltyProApp",
-                //    DateCreated = DateTime.Parse("2016/10/01"),
-                //    Images = new List<SoftwareProjectImage>
-                //    {
-                //         new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\loyalty-pro-app\\1.png"
-                //        },
-                //          new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\loyalty-pro-app\\2.png"
-                //        },
-                //           new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\loyalty-pro-app\\3.png"
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\loyalty-pro-app\\4.png"
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\loyalty-pro-app\\5.png"
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\loyalty-pro-app\\6.png"
-                //        }
-                //    }
-                //},
-                //new SoftwareProject
-                //{
-                //    Id = 4,
-                //    Name = "University Dissertation - GPS Logger",
-                //    ProjectRef = "uniDis",
-                //    DateCreated = DateTime.Parse("2017/05/01"),
-                //    Images = new List<SoftwareProjectImage>
-                //    {
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\gps-logger\\1.png",
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\gps-logger\\2.png",
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\gps-logger\\3.png",
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\gps-logger\\4.png",
-                //        },
-                //        new SoftwareProjectImage
-                //        {
-                //            ImageUrl = "images\\software-images\\gps-logger\\5.png",
-                //        }
-                //    }
+            //new SoftwareProject
+            //{
+            //    Id = 2,
+            //    Name = "University Project - E-Commere Project",
+            //    ProjectRef = "uniEcom",
+            //    DateCreated = DateTime.Parse("2015/01/01"),
+            //    Images = new List<SoftwareProjectImage>
+            //    {
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\ecommerce-site\\1.png",
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\ecommerce-site\\2.png",
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\ecommerce-site\\3.png",
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\ecommerce-site\\4.png",
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\ecommerce-site\\5.png",
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\ecommerce-site\\6.png",
+            //        },
+            //    }
+            //},
+            //new SoftwareProject
+            //{
+            //    Id = 3,
+            //    Name = "Loyalty Pro Android App",
+            //    ProjectRef = "loyaltyProApp",
+            //    DateCreated = DateTime.Parse("2016/10/01"),
+            //    Images = new List<SoftwareProjectImage>
+            //    {
+            //         new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\loyalty-pro-app\\1.png"
+            //        },
+            //          new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\loyalty-pro-app\\2.png"
+            //        },
+            //           new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\loyalty-pro-app\\3.png"
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\loyalty-pro-app\\4.png"
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\loyalty-pro-app\\5.png"
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\loyalty-pro-app\\6.png"
+            //        }
+            //    }
+            //},
+            //new SoftwareProject
+            //{
+            //    Id = 4,
+            //    Name = "University Dissertation - GPS Logger",
+            //    ProjectRef = "uniDis",
+            //    DateCreated = DateTime.Parse("2017/05/01"),
+            //    Images = new List<SoftwareProjectImage>
+            //    {
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\gps-logger\\1.png",
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\gps-logger\\2.png",
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\gps-logger\\3.png",
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\gps-logger\\4.png",
+            //        },
+            //        new SoftwareProjectImage
+            //        {
+            //            ImageUrl = "images\\software-images\\gps-logger\\5.png",
+            //        }
+            //    }
 
-                //}
+            //}
             );
         }
     }

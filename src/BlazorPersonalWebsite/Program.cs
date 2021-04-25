@@ -18,7 +18,7 @@ namespace BlazorPersonalWebsite
 
             builder.RootComponents.Add<App>("#app");
 
-            string dbContext = "Server=(localdb)\\MSSQLLocalDB;Database=PersonalWebsite;";
+            string dbContext = "Server=(localdb)\\MSSQLLocalDB;Database=PersonalWebsite;Trusted_Connection=True;";
 
             builder.Services
                 .AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })

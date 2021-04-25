@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorPersonalWebsite.Model
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorPersonalWebsite.DataAccess", "src\BlazorPersonalWebsite.DataAccess\BlazorPersonalWebsite.DataAccess.csproj", "{4AB07778-EAC0-4027-A6F0-7157471CEC57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorPersonalWebsite.EntityFramework", "src\BlazorPersonalWebsite.EntityFramework\BlazorPersonalWebsite.EntityFramework.csproj", "{21128475-3ABA-4BD1-A7BE-4AE5F9E88850}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorPersonalWebsite.EntityFramework", "src\BlazorPersonalWebsite.EntityFramework\BlazorPersonalWebsite.EntityFramework.csproj", "{21128475-3ABA-4BD1-A7BE-4AE5F9E88850}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorPersonalWebsite.RestApi", "src\BlazorPersonalWebsite.RestApi\BlazorPersonalWebsite.RestApi.csproj", "{0B83770F-EA87-4233-B1A7-DEA5E0208C78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{21128475-3ABA-4BD1-A7BE-4AE5F9E88850}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21128475-3ABA-4BD1-A7BE-4AE5F9E88850}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21128475-3ABA-4BD1-A7BE-4AE5F9E88850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B83770F-EA87-4233-B1A7-DEA5E0208C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B83770F-EA87-4233-B1A7-DEA5E0208C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B83770F-EA87-4233-B1A7-DEA5E0208C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B83770F-EA87-4233-B1A7-DEA5E0208C78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
