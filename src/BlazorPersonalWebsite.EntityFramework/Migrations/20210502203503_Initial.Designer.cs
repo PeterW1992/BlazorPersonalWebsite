@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorPersonalWebsite.EntityFramework.Migrations
 {
     [DbContext(typeof(WebsiteContext))]
-    [Migration("20210422204642_Initial")]
+    [Migration("20210502203503_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -131,29 +131,6 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BlazorPersonalWebsite.Models.WoodworkImage", b =>
-                {
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("WoodworkProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WoodworkProjectId1")
-                        .HasColumnType("int");
-
-                    b.HasKey("ImageUrl");
-
-                    b.HasIndex("WoodworkProjectId");
-
-                    b.HasIndex("WoodworkProjectId1");
-
-                    b.ToTable("WoodworkImage");
-                });
-
             modelBuilder.Entity("BlazorPersonalWebsite.Models.WoodworkProject", b =>
                 {
                     b.Property<int>("Id")
@@ -178,6 +155,29 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                     b.ToTable("WoodworkProject");
                 });
 
+            modelBuilder.Entity("BlazorPersonalWebsite.Models.WoodworkProjectImage", b =>
+                {
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("WoodworkProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WoodworkProjectId1")
+                        .HasColumnType("int");
+
+                    b.HasKey("ImageUrl");
+
+                    b.HasIndex("WoodworkProjectId");
+
+                    b.HasIndex("WoodworkProjectId1");
+
+                    b.ToTable("WoodworkProjectImage");
+                });
+
             modelBuilder.Entity("BlazorPersonalWebsite.Models.SoftwareProjectImage", b =>
                 {
                     b.HasOne("BlazorPersonalWebsite.Models.SoftwareProject", null)
@@ -186,12 +186,14 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BlazorPersonalWebsite.Models.SoftwareProject", null)
+                    b.HasOne("BlazorPersonalWebsite.Models.SoftwareProject", "SoftwareProject")
                         .WithMany("Images")
                         .HasForeignKey("SoftwareProjectId1");
+
+                    b.Navigation("SoftwareProject");
                 });
 
-            modelBuilder.Entity("BlazorPersonalWebsite.Models.WoodworkImage", b =>
+            modelBuilder.Entity("BlazorPersonalWebsite.Models.WoodworkProjectImage", b =>
                 {
                     b.HasOne("BlazorPersonalWebsite.Models.WoodworkProject", null)
                         .WithMany()
@@ -199,9 +201,11 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BlazorPersonalWebsite.Models.WoodworkProject", null)
+                    b.HasOne("BlazorPersonalWebsite.Models.WoodworkProject", "WoodworkProject")
                         .WithMany("Images")
                         .HasForeignKey("WoodworkProjectId1");
+
+                    b.Navigation("WoodworkProject");
                 });
 
             modelBuilder.Entity("BlazorPersonalWebsite.Models.SoftwareProject", b =>

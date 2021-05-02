@@ -151,12 +151,20 @@ namespace BlazorPersonalWebsite.DataAccess
 
         public async Task<SoftwareProject> GetSoftwareProjectAsync(string projectRef)
         {
-            return await this._dbContext.SoftwareProjects.AsNoTracking().SingleOrDefaultAsync(sp => sp.ProjectRef == projectRef);
+            return await this._dbContext
+                .SoftwareProjects
+                .Include(sp => sp.Images)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(sp => sp.ProjectRef == projectRef);
         }
 
         public async Task<List<SoftwareProject>> ListSoftwareProjectsAsync()
         {
-            return await this._dbContext.SoftwareProjects.AsNoTracking().ToListAsync();
+            return await this._dbContext
+                    .SoftwareProjects
+                    .Include(sp => sp.Images)
+                    .AsNoTracking()
+                    .ToListAsync();
         }
     }
 }

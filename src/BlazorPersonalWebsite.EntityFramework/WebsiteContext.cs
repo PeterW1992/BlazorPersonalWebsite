@@ -21,11 +21,17 @@ namespace BlazorPersonalWebsite.EntityFramework
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<JobApplication>()
+               .ToTable("JobApplication");
+
+            modelBuilder.Entity<JobApplication>()
                 .HasKey(k => k.Id);
 
             modelBuilder.Entity<JobApplication>()
                 .Property(p => p.Id)
                 .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<SoftwareProject>()
+                .ToTable("SoftwareProject");
 
             modelBuilder.Entity<SoftwareProject>()
                 .HasKey(k => k.Id);
@@ -40,10 +46,13 @@ namespace BlazorPersonalWebsite.EntityFramework
                 .HasForeignKey(f => f.SoftwareProjectId);
 
             modelBuilder.Entity<WoodworkProject>()
+                .ToTable("WoodworkProject");
+
+            modelBuilder.Entity<WoodworkProject>()
                 .HasKey(k => k.Id);
 
             modelBuilder.Entity<WoodworkProject>()
-                .HasMany<WoodworkImage>()
+                .HasMany<WoodworkProjectImage>()
                 .WithOne()
                 .HasForeignKey(f => f.WoodworkProjectId);
 
@@ -52,9 +61,23 @@ namespace BlazorPersonalWebsite.EntityFramework
                 .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<SoftwareProjectImage>()
+               .ToTable("SoftwareProjectImage");
+
+            modelBuilder.Entity<SoftwareProjectImage>()
                 .HasKey(k => k.ImageUrl);
 
-            modelBuilder.Entity<WoodworkImage>()
+            modelBuilder.Entity<SoftwareProjectImage>()
+                .Property(x => x.SoftwareProjectImageId)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<WoodworkProjectImage>()
+               .ToTable("WoodworkProjectImage");
+
+            modelBuilder.Entity<WoodworkProjectImage>()
+                .Property(x => x.WoodworkProjectImageId)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<WoodworkProjectImage>()
                 .HasKey(k => k.ImageUrl);
 
             AddSoftwareProjects(modelBuilder);
@@ -63,7 +86,7 @@ namespace BlazorPersonalWebsite.EntityFramework
 
         private void AddWoodworkProjects(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<WoodworkImage>()
+            modelBuilder.Entity<WoodworkProjectImage>()
                 .HasData(
                 new WoodworkProject
                 {
@@ -71,9 +94,9 @@ namespace BlazorPersonalWebsite.EntityFramework
                     Name = "Side Gate",
                     ProjectRef = "sideGate",
                     DateCreated = DateTime.Parse("2017/07/05"),
-                    Images = new List<WoodworkImage>
+                    Images = new List<WoodworkProjectImage>
                     {
-                        new WoodworkImage
+                        new WoodworkProjectImage
                         {
                             Description = "Unhung gate",
                             ImageUrl = "images\\woodwork-images\\side-gate\\sidegate-unhung.jpg"
@@ -86,9 +109,9 @@ namespace BlazorPersonalWebsite.EntityFramework
                     Name = "Workbench",
                     ProjectRef = "workbench",
                     DateCreated = DateTime.Parse("2017/08/21"),
-                    Images = new List<WoodworkImage>
+                    Images = new List<WoodworkProjectImage>
                     {
-                        new WoodworkImage
+                        new WoodworkProjectImage
                         {
                             Description = "Unfinished workbench",
                             ImageUrl = "images\\woodwork-images\\workbench\\workbench-unfinished.jpg"
@@ -101,9 +124,9 @@ namespace BlazorPersonalWebsite.EntityFramework
                      Name = "Bird table",
                      ProjectRef = "birdTable",
                      DateCreated = DateTime.Parse("2017/08/21"),
-                     Images = new List<WoodworkImage>
+                     Images = new List<WoodworkProjectImage>
                     {
-                        new WoodworkImage
+                        new WoodworkProjectImage
                         {
                             Description = "Unfinished workbench",
                             ImageUrl = "images\\woodwork-images\\bird-table\\bird-table.jpg"

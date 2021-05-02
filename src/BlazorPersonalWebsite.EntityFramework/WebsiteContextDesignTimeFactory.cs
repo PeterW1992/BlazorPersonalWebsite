@@ -13,7 +13,7 @@ namespace BlazorPersonalWebsite.EntityFramework
         public WebsiteContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<WebsiteContext>();
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PersonalWebsite;Integrated Security=SSPI");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-UHG3KN8\\SQLEXPRESS;Initial Catalog=PersonalWebsite;Integrated Security=SSPI");
 
             return new WebsiteContext(optionsBuilder.Options);
         }

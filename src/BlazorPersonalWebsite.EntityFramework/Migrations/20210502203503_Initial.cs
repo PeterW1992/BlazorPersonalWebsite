@@ -61,9 +61,9 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                 columns: table => new
                 {
                     ImageUrl = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SoftwareProjectId = table.Column<int>(type: "int", nullable: false),
-                    SoftwareProjectId1 = table.Column<int>(type: "int", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    SoftwareProjectId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,25 +83,25 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "WoodworkImage",
+                name: "WoodworkProjectImage",
                 columns: table => new
                 {
                     ImageUrl = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WoodworkProjectId = table.Column<int>(type: "int", nullable: false),
-                    WoodworkProjectId1 = table.Column<int>(type: "int", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    WoodworkProjectId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WoodworkImage", x => x.ImageUrl);
+                    table.PrimaryKey("PK_WoodworkProjectImage", x => x.ImageUrl);
                     table.ForeignKey(
-                        name: "FK_WoodworkImage_WoodworkProject_WoodworkProjectId",
+                        name: "FK_WoodworkProjectImage_WoodworkProject_WoodworkProjectId",
                         column: x => x.WoodworkProjectId,
                         principalTable: "WoodworkProject",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_WoodworkImage_WoodworkProject_WoodworkProjectId1",
+                        name: "FK_WoodworkProjectImage_WoodworkProject_WoodworkProjectId1",
                         column: x => x.WoodworkProjectId1,
                         principalTable: "WoodworkProject",
                         principalColumn: "Id",
@@ -135,13 +135,13 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                 column: "SoftwareProjectId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WoodworkImage_WoodworkProjectId",
-                table: "WoodworkImage",
+                name: "IX_WoodworkProjectImage_WoodworkProjectId",
+                table: "WoodworkProjectImage",
                 column: "WoodworkProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WoodworkImage_WoodworkProjectId1",
-                table: "WoodworkImage",
+                name: "IX_WoodworkProjectImage_WoodworkProjectId1",
+                table: "WoodworkProjectImage",
                 column: "WoodworkProjectId1");
         }
 
@@ -154,7 +154,7 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                 name: "SoftwareProjectImage");
 
             migrationBuilder.DropTable(
-                name: "WoodworkImage");
+                name: "WoodworkProjectImage");
 
             migrationBuilder.DropTable(
                 name: "SoftwareProject");
