@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 using BlazorPersonalWebsite.Extensions;
-using BlazorPersonalWebsite.Models.Interfaces;
-using BlazorPersonalWebsite.Models;
+using BlazorPersonalWebsite.ViewModels;
 using Microsoft.JSInterop;
+using BlazorPersonalWebsite.Services;
 
 namespace BlazorPersonalWebsite.Pages
 {
@@ -16,7 +16,7 @@ namespace BlazorPersonalWebsite.Pages
         NavigationManager NavManager { get; set; }
 
         [Inject]
-        IWoodworkProjectRepository WoodworkProjectRepo { get; set; }
+        IWoodworkProjectService WoodworkProjectService { get; set; }
 
         private WoodworkProject project;
 
@@ -29,7 +29,7 @@ namespace BlazorPersonalWebsite.Pages
 
             if (projectRef != null)
             {
-                project = await WoodworkProjectRepo.GetWoodworkProjectAsync(projectRef);
+                project = await WoodworkProjectService.GetWoodworkProjectAsync(projectRef);
             }
 
         }

@@ -1,34 +1,40 @@
 ﻿@page "/woodworkprojects"
 
-@using BlazorPersonalWebsite.Models
-@using BlazorPersonalWebsite.Models.Interfaces
-@inject IWoodworkProjectRepository WoodworkProjectRepo
+@using BlazorPersonalWebsite.ViewModels
+@using BlazorPersonalWebsite.Services
+@inject IWoodworkProjectService WoodworkProjectService
 
 <h3>Woodwork Projects</h3>
 
 <div class="row">
-    @foreach (var project in projects)
+    @if (projects != null)
     {
-        <div class="col-md-3">
-            <label class="projectName">@project.Name</label>
-            <div class="thumbnail">
-                @if (project.Images != null && project.Images.Count > 0)
-                {
-                    <a href="woodworkProject?projectRef=@project.ProjectRef">
-                        <img src="@project.Images[0].ImageUrl" alt="@project.Images[0].Description" style="width:100%" />
-                    </a>
-
-                }
+        @foreach (var project in projects)
+        {
+            <div class="col-md-3">
+                <label class="projectName">@project.Name</label>
+                <div class="thumbnail">
+                    @if (project.Images != null && project.Images.Count > 0)
+                    {
+                        <a href="woodworkProject?projectRef=@project.ProjectRef">
+                            <img src="@project.Images[0].ImageUrl" alt="@project.Images[0].Description" style="width:100%" />
+                        </a>
+                    }
+                </div>
             </div>
-        </div>
+        }
+    }
+    else 
+    {
+        <label>No projects to display</label>
     }
 </div>
 
 @code {
-    private List<WoodworkProject> projects;
+    private IEnumerable<WoodworkProject> projects;
 
     protected override async Task OnInitializedAsync()
     {
-        projects = await WoodworkProjectRepo.ListWoodworkProjectsAsync();
+        projects = await WoodworkProjectService.GetWoodworkProjectsAsync();
     }
 }

@@ -77,26 +77,47 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                             Description = "Skill action calculator for video game Runescape",
                             Name = "Runescape Calculator",
                             ProjectRef = "rsCalc"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DateCreated = new DateTime(2016, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "University e-commerce book store",
+                            ProjectRef = "uniEcomm"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DateCreated = new DateTime(2016, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Loyalty Pro Android App",
+                            ProjectRef = "loyaltyProApp"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DateCreated = new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "University Dissertation - GPS Logger",
+                            ProjectRef = "uniDis"
                         });
                 });
 
             modelBuilder.Entity("BlazorPersonalWebsite.Models.SoftwareProjectImage", b =>
                 {
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SoftwareProjectId")
-                        .HasColumnType("int");
-
                     b.Property<int>("SoftwareProjectImageId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.HasKey("ImageUrl");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SoftwareProjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SoftwareProjectImageId");
 
                     b.HasIndex("SoftwareProjectId");
 
@@ -105,31 +126,150 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                     b.HasData(
                         new
                         {
-                            ImageUrl = "images\\software-images\\rs-calculator\\1.png",
+                            SoftwareProjectImageId = 1,
                             Description = "Agility skill calculator",
-                            SoftwareProjectId = 1,
-                            SoftwareProjectImageId = 0
+                            ImageUrl = "images\\software-images\\rs-calculator\\1.png",
+                            SoftwareProjectId = 1
                         },
                         new
                         {
-                            ImageUrl = "images\\software-images\\rs-calculator\\2.png",
+                            SoftwareProjectImageId = 2,
                             Description = "Fishing skill calculator",
-                            SoftwareProjectId = 1,
-                            SoftwareProjectImageId = 0
+                            ImageUrl = "images\\software-images\\rs-calculator\\2.png",
+                            SoftwareProjectId = 1
                         },
                         new
                         {
-                            ImageUrl = "images\\software-images\\rs-calculator\\3.png",
+                            SoftwareProjectImageId = 3,
                             Description = "Dropdown showing which skills are included",
-                            SoftwareProjectId = 1,
-                            SoftwareProjectImageId = 0
+                            ImageUrl = "images\\software-images\\rs-calculator\\3.png",
+                            SoftwareProjectId = 1
                         },
                         new
                         {
-                            ImageUrl = "images\\software-images\\rs-calculator\\4.png",
+                            SoftwareProjectImageId = 4,
                             Description = "Dropdown showing skill subcategories",
-                            SoftwareProjectId = 1,
-                            SoftwareProjectImageId = 0
+                            ImageUrl = "images\\software-images\\rs-calculator\\4.png",
+                            SoftwareProjectId = 1
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 5,
+                            Description = "Ecommerce homepage",
+                            ImageUrl = "images\\software-images\\ecommerce-site\\1.png",
+                            SoftwareProjectId = 2
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 6,
+                            Description = "Ecommerce product page",
+                            ImageUrl = "images\\software-images\\ecommerce-site\\2.png",
+                            SoftwareProjectId = 2
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 7,
+                            Description = "Ecommerce basket page",
+                            ImageUrl = "images\\software-images\\ecommerce-site\\3.png",
+                            SoftwareProjectId = 2
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 8,
+                            Description = "Ecommerce admin page",
+                            ImageUrl = "images\\software-images\\ecommerce-site\\4.png",
+                            SoftwareProjectId = 2
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 9,
+                            Description = "Ecommerce admin page - Edit listing",
+                            ImageUrl = "images\\software-images\\ecommerce-site\\5.png",
+                            SoftwareProjectId = 2
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 10,
+                            Description = "Ecommerce contact us page",
+                            ImageUrl = "images\\software-images\\ecommerce-site\\6.png",
+                            SoftwareProjectId = 2
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 11,
+                            Description = "Main menu",
+                            ImageUrl = "images\\software-images\\loyalty-pro-app\\1.png",
+                            SoftwareProjectId = 3
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 12,
+                            Description = "Balance overview page",
+                            ImageUrl = "images\\software-images\\loyalty-pro-app\\2.png",
+                            SoftwareProjectId = 3
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 13,
+                            Description = "Personal details page",
+                            ImageUrl = "images\\software-images\\loyalty-pro-app\\3.png",
+                            SoftwareProjectId = 3
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 14,
+                            Description = "Vouchers overview page",
+                            ImageUrl = "images\\software-images\\loyalty-pro-app\\4.png",
+                            SoftwareProjectId = 3
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 15,
+                            Description = "Initial unlogged in page",
+                            ImageUrl = "images\\software-images\\loyalty-pro-app\\5.png",
+                            SoftwareProjectId = 3
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 16,
+                            Description = "Manual log in page",
+                            ImageUrl = "images\\software-images\\loyalty-pro-app\\6.png",
+                            SoftwareProjectId = 3
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 17,
+                            Description = "Display showing journeys between two staypoints",
+                            ImageUrl = "images\\software-images\\gps-logger\\1.png",
+                            SoftwareProjectId = 4
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 18,
+                            Description = "Individual journey view",
+                            ImageUrl = "images\\software-images\\gps-logger\\2.png",
+                            SoftwareProjectId = 4
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 19,
+                            Description = "Staypoint overview showing individual visits",
+                            ImageUrl = "images\\software-images\\gps-logger\\3.png",
+                            SoftwareProjectId = 4
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 20,
+                            Description = "Staypoint shown on map",
+                            ImageUrl = "images\\software-images\\gps-logger\\4.png",
+                            SoftwareProjectId = 4
+                        },
+                        new
+                        {
+                            SoftwareProjectImageId = 21,
+                            Description = "Open side bar",
+                            ImageUrl = "images\\software-images\\gps-logger\\5.png",
+                            SoftwareProjectId = 4
                         });
                 });
 
@@ -155,29 +295,103 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WoodworkProject");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DateCreated = new DateTime(2017, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Side Gate",
+                            ProjectRef = "sideGate"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DateCreated = new DateTime(2017, 8, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Workbench",
+                            ProjectRef = "workbench"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DateCreated = new DateTime(2017, 8, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Bird table",
+                            ProjectRef = "birdTable"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DateCreated = new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Raised Garden bed (Small)",
+                            ProjectRef = "raisedGardenBendSmall"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DateCreated = new DateTime(2020, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Raised Garden bed (Large)",
+                            ProjectRef = "raisedGardenBendLarge"
+                        });
                 });
 
             modelBuilder.Entity("BlazorPersonalWebsite.Models.WoodworkProjectImage", b =>
                 {
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("WoodworkProjectId")
-                        .HasColumnType("int");
-
                     b.Property<int>("WoodworkProjectImageId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.HasKey("ImageUrl");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("WoodworkProjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("WoodworkProjectImageId");
 
                     b.HasIndex("WoodworkProjectId");
 
                     b.ToTable("WoodworkProjectImage");
+
+                    b.HasData(
+                        new
+                        {
+                            WoodworkProjectImageId = 1,
+                            Description = "Unhung gate",
+                            ImageUrl = "images\\woodwork-images\\side-gate\\sidegate-unhung.jpg",
+                            WoodworkProjectId = 1
+                        },
+                        new
+                        {
+                            WoodworkProjectImageId = 2,
+                            Description = "Unfinished workbench",
+                            ImageUrl = "images\\woodwork-images\\workbench\\workbench-unfinished.jpg",
+                            WoodworkProjectId = 2
+                        },
+                        new
+                        {
+                            WoodworkProjectImageId = 3,
+                            Description = "Unfinished workbench",
+                            ImageUrl = "images\\woodwork-images\\bird-table\\bird-table.jpg",
+                            WoodworkProjectId = 3
+                        },
+                        new
+                        {
+                            WoodworkProjectImageId = 4,
+                            Description = "All raised garden beds",
+                            ImageUrl = "images\\woodwork-images\\raised-garden-bed\\all-in-view.jpg",
+                            WoodworkProjectId = 4
+                        },
+                        new
+                        {
+                            WoodworkProjectImageId = 5,
+                            Description = "All raised garden beds",
+                            ImageUrl = "images\\woodwork-images\\raised-garden-bed\\all-in-view.jpg",
+                            WoodworkProjectId = 5
+                        });
                 });
 
             modelBuilder.Entity("BlazorPersonalWebsite.Models.SoftwareProjectImage", b =>

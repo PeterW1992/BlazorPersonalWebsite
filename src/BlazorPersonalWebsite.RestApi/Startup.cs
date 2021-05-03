@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,12 @@ namespace BlazorPersonalWebsite.RestApi
         {
             string dbContext = Configuration.GetConnectionString("DBContext");
 
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.File(path: "logs\\log.log", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
             services
+                .AddLogging(builder => builder.AddSerilog())
                 .AddDbContext<WebsiteContext>(options => options
                     .EnableSensitiveDataLogging(true)
                     .EnableDetailedErrors(true)
@@ -42,7 +48,7 @@ namespace BlazorPersonalWebsite.RestApi
                 .AddScoped<IJobApplicationRepository, JobApplicationRepository>()
                 .AddScoped<ISoftwareProjectRepository, SoftwareProjectRepository>()
                 .AddScoped<IWoodworkProjectRepository, WoodworkProjectRepository>()
-                .AddAutoMapper(typeof(SoftwareProjectProfile))
+                .AddAutoMapper(typeof(SoftwareProjectProfile), typeof(WoodworkProjectProfile))
                 .AddCors(c =>
                 {
                     c.AddPolicy(CorsPolicy, options => options.AllowAnyOrigin());

@@ -24,7 +24,7 @@ namespace BlazorPersonalWebsite
                 .AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost/RestApi/") })
                 .AddScoped<IJobApplicationRepository, JobApplicationRepository>()
                 .AddScoped<ISoftwareProjectService, SoftwareProjectService>()
-                .AddScoped<IWoodworkProjectRepository, WoodworkProjectRepository>();
+                .AddScoped<IWoodworkProjectService, WoodworkProjectService>();
 
             await builder.Build().RunAsync();
         }
