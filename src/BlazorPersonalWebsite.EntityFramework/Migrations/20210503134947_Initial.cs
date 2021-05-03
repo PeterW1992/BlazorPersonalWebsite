@@ -61,9 +61,10 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                 columns: table => new
                 {
                     ImageUrl = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    SoftwareProjectImageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SoftwareProjectId = table.Column<int>(type: "int", nullable: false),
-                    SoftwareProjectId1 = table.Column<int>(type: "int", nullable: true)
+                    SoftwareProjectId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -74,12 +75,6 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                         principalTable: "SoftwareProject",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_SoftwareProjectImage_SoftwareProject_SoftwareProjectId1",
-                        column: x => x.SoftwareProjectId1,
-                        principalTable: "SoftwareProject",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -87,9 +82,10 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                 columns: table => new
                 {
                     ImageUrl = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    WoodworkProjectImageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WoodworkProjectId = table.Column<int>(type: "int", nullable: false),
-                    WoodworkProjectId1 = table.Column<int>(type: "int", nullable: true)
+                    WoodworkProjectId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -100,12 +96,6 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                         principalTable: "WoodworkProject",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_WoodworkProjectImage_WoodworkProject_WoodworkProjectId1",
-                        column: x => x.WoodworkProjectId1,
-                        principalTable: "WoodworkProject",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -115,13 +105,13 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
 
             migrationBuilder.InsertData(
                 table: "SoftwareProjectImage",
-                columns: new[] { "ImageUrl", "Description", "SoftwareProjectId", "SoftwareProjectId1" },
+                columns: new[] { "ImageUrl", "Description", "SoftwareProjectId" },
                 values: new object[,]
                 {
-                    { "images\\software-images\\rs-calculator\\1.png", "Agility skill calculator", 1, null },
-                    { "images\\software-images\\rs-calculator\\2.png", "Fishing skill calculator", 1, null },
-                    { "images\\software-images\\rs-calculator\\3.png", "Dropdown showing which skills are included", 1, null },
-                    { "images\\software-images\\rs-calculator\\4.png", "Dropdown showing skill subcategories", 1, null }
+                    { "images\\software-images\\rs-calculator\\1.png", "Agility skill calculator", 1 },
+                    { "images\\software-images\\rs-calculator\\2.png", "Fishing skill calculator", 1 },
+                    { "images\\software-images\\rs-calculator\\3.png", "Dropdown showing which skills are included", 1 },
+                    { "images\\software-images\\rs-calculator\\4.png", "Dropdown showing skill subcategories", 1 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -130,19 +120,9 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                 column: "SoftwareProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SoftwareProjectImage_SoftwareProjectId1",
-                table: "SoftwareProjectImage",
-                column: "SoftwareProjectId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_WoodworkProjectImage_WoodworkProjectId",
                 table: "WoodworkProjectImage",
                 column: "WoodworkProjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_WoodworkProjectImage_WoodworkProjectId1",
-                table: "WoodworkProjectImage",
-                column: "WoodworkProjectId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

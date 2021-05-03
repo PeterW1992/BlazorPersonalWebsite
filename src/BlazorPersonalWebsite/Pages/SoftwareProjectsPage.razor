@@ -1,34 +1,41 @@
 ﻿@page "/softwareprojects"
 
-@using BlazorPersonalWebsite.Models
-@using BlazorPersonalWebsite.Models.Interfaces
-@inject ISoftwareProjectRepository SoftwareProjectRepo
+@using BlazorPersonalWebsite.Services
+@using BlazorPersonalWebsite.ViewModels;
+
+@inject ISoftwareProjectService SoftwareProjectService
 
 <h3>Software Projects</h3>
 
 <div class="projectList">
-    @foreach (var project in projects.OrderByDescending(p => p.DateCreated))
+    @if (projects != null)
     {
-        <div class="projectListItem">
-            <a href="softwareProject?projectRef=@project.ProjectRef">
-                <label class="projectName">@project.Name</label>
-                <div class="projectListImageContainer">
-                    @if (project.Images != null && project.Images.Count > 0)
-                    {
-                        <img class="projectListImage" src="@project.Images[0].ImageUrl" />
-                    }
-                </div>
-            </a>
-        </div>
-    }
+        @foreach (var project in projects.OrderByDescending(p => p.DateCreated))
+        {
+            <div class="projectListItem">
+                <a href="softwareProject?projectRef=@project.ProjectRef">
+                    <label class="projectName">@project.Name</label>
+                    <div class="projectListImageContainer">
+                        @if (project.Images != null && project.Images.Count > 0)
+                        {
+                            <img class="projectListImage" src="@project.Images[0].ImageUrl" />
+                        }
+                    </div>
+                </a>
+            </div>
+        }
+    } else
+            {
+                <label>No projects to display</label>
+            }
 </div>
 
 
 @code {
-    private List<SoftwareProject> projects;
+    private IEnumerable<SoftwareProject> projects;
 
     protected override async Task OnInitializedAsync()
     {
-        projects = await SoftwareProjectRepo.ListSoftwareProjectsAsync();
+        projects = await SoftwareProjectService.GetSoftwareProjectsAsync();
     }
 }

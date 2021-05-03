@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorPersonalWebsite.EntityFramework.Migrations
 {
     [DbContext(typeof(WebsiteContext))]
-    [Migration("20210502203503_Initial")]
+    [Migration("20210503134947_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,14 +93,14 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                     b.Property<int>("SoftwareProjectId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SoftwareProjectId1")
-                        .HasColumnType("int");
+                    b.Property<int>("SoftwareProjectImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.HasKey("ImageUrl");
 
                     b.HasIndex("SoftwareProjectId");
-
-                    b.HasIndex("SoftwareProjectId1");
 
                     b.ToTable("SoftwareProjectImage");
 
@@ -109,25 +109,29 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                         {
                             ImageUrl = "images\\software-images\\rs-calculator\\1.png",
                             Description = "Agility skill calculator",
-                            SoftwareProjectId = 1
+                            SoftwareProjectId = 1,
+                            SoftwareProjectImageId = 0
                         },
                         new
                         {
                             ImageUrl = "images\\software-images\\rs-calculator\\2.png",
                             Description = "Fishing skill calculator",
-                            SoftwareProjectId = 1
+                            SoftwareProjectId = 1,
+                            SoftwareProjectImageId = 0
                         },
                         new
                         {
                             ImageUrl = "images\\software-images\\rs-calculator\\3.png",
                             Description = "Dropdown showing which skills are included",
-                            SoftwareProjectId = 1
+                            SoftwareProjectId = 1,
+                            SoftwareProjectImageId = 0
                         },
                         new
                         {
                             ImageUrl = "images\\software-images\\rs-calculator\\4.png",
                             Description = "Dropdown showing skill subcategories",
-                            SoftwareProjectId = 1
+                            SoftwareProjectId = 1,
+                            SoftwareProjectImageId = 0
                         });
                 });
 
@@ -166,44 +170,36 @@ namespace BlazorPersonalWebsite.EntityFramework.Migrations
                     b.Property<int>("WoodworkProjectId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WoodworkProjectId1")
-                        .HasColumnType("int");
+                    b.Property<int>("WoodworkProjectImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.HasKey("ImageUrl");
 
                     b.HasIndex("WoodworkProjectId");
-
-                    b.HasIndex("WoodworkProjectId1");
 
                     b.ToTable("WoodworkProjectImage");
                 });
 
             modelBuilder.Entity("BlazorPersonalWebsite.Models.SoftwareProjectImage", b =>
                 {
-                    b.HasOne("BlazorPersonalWebsite.Models.SoftwareProject", null)
-                        .WithMany()
+                    b.HasOne("BlazorPersonalWebsite.Models.SoftwareProject", "SoftwareProject")
+                        .WithMany("Images")
                         .HasForeignKey("SoftwareProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("BlazorPersonalWebsite.Models.SoftwareProject", "SoftwareProject")
-                        .WithMany("Images")
-                        .HasForeignKey("SoftwareProjectId1");
 
                     b.Navigation("SoftwareProject");
                 });
 
             modelBuilder.Entity("BlazorPersonalWebsite.Models.WoodworkProjectImage", b =>
                 {
-                    b.HasOne("BlazorPersonalWebsite.Models.WoodworkProject", null)
-                        .WithMany()
+                    b.HasOne("BlazorPersonalWebsite.Models.WoodworkProject", "WoodworkProject")
+                        .WithMany("Images")
                         .HasForeignKey("WoodworkProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("BlazorPersonalWebsite.Models.WoodworkProject", "WoodworkProject")
-                        .WithMany("Images")
-                        .HasForeignKey("WoodworkProjectId1");
 
                     b.Navigation("WoodworkProject");
                 });

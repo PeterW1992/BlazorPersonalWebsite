@@ -1,6 +1,7 @@
 using BlazorPersonalWebsite.DataAccess;
 using BlazorPersonalWebsite.EntityFramework;
 using BlazorPersonalWebsite.Models.Interfaces;
+using BlazorPersonalWebsite.RestApi.Mappings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,12 +26,14 @@ namespace BlazorPersonalWebsite.RestApi
             Configuration = configuration;
         }
 
+        private static string CorsPolicy = "AllowOrigin";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             string dbContext = Configuration.GetConnectionString("DBContext");
+
             services
                 .AddDbContext<WebsiteContext>(options => options
                     .EnableSensitiveDataLogging(true)
@@ -38,7 +41,12 @@ namespace BlazorPersonalWebsite.RestApi
                     .UseSqlServer(dbContext))
                 .AddScoped<IJobApplicationRepository, JobApplicationRepository>()
                 .AddScoped<ISoftwareProjectRepository, SoftwareProjectRepository>()
-                .AddScoped<IWoodworkProjectRepository, WoodworkProjectRepository>();
+                .AddScoped<IWoodworkProjectRepository, WoodworkProjectRepository>()
+                .AddAutoMapper(typeof(SoftwareProjectProfile))
+                .AddCors(c =>
+                {
+                    c.AddPolicy(CorsPolicy, options => options.AllowAnyOrigin());
+                });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -60,6 +68,8 @@ namespace BlazorPersonalWebsite.RestApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(CorsPolicy);
 
             app.UseAuthorization();
 

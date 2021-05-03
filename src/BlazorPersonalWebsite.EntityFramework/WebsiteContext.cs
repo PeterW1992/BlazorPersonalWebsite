@@ -40,21 +40,11 @@ namespace BlazorPersonalWebsite.EntityFramework
                 .Property(p => p.Id)
                 .ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<SoftwareProject>()
-                .HasMany<SoftwareProjectImage>()
-                .WithOne()
-                .HasForeignKey(f => f.SoftwareProjectId);
-
             modelBuilder.Entity<WoodworkProject>()
                 .ToTable("WoodworkProject");
 
             modelBuilder.Entity<WoodworkProject>()
                 .HasKey(k => k.Id);
-
-            modelBuilder.Entity<WoodworkProject>()
-                .HasMany<WoodworkProjectImage>()
-                .WithOne()
-                .HasForeignKey(f => f.WoodworkProjectId);
 
             modelBuilder.Entity<WoodworkProject>()
                 .Property(p => p.Id)

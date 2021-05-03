@@ -1,6 +1,8 @@
+using BlazorPersonalWebsite.Config;
 using BlazorPersonalWebsite.DataAccess;
 using BlazorPersonalWebsite.EntityFramework;
 using BlazorPersonalWebsite.Models.Interfaces;
+using BlazorPersonalWebsite.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,13 +20,10 @@ namespace BlazorPersonalWebsite
 
             builder.RootComponents.Add<App>("#app");
 
-            string dbContext = "Server=(localdb)\\MSSQLLocalDB;Database=PersonalWebsite;Trusted_Connection=True;";
-
             builder.Services
-                .AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
-                .AddDbContext<WebsiteContext>(options => options.UseSqlServer(dbContext))
+                .AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost/RestApi/") })
                 .AddScoped<IJobApplicationRepository, JobApplicationRepository>()
-                .AddScoped<ISoftwareProjectRepository, SoftwareProjectRepository>()
+                .AddScoped<ISoftwareProjectService, SoftwareProjectService>()
                 .AddScoped<IWoodworkProjectRepository, WoodworkProjectRepository>();
 
             await builder.Build().RunAsync();

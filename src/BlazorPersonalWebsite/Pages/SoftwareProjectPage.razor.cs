@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 using BlazorPersonalWebsite.Extensions;
-using BlazorPersonalWebsite.Models.Interfaces;
-using BlazorPersonalWebsite.Models;
 using Microsoft.JSInterop;
+using BlazorPersonalWebsite.Services;
+using BlazorPersonalWebsite.ViewModels;
 
 namespace BlazorPersonalWebsite.Pages
 {
@@ -16,7 +16,7 @@ namespace BlazorPersonalWebsite.Pages
         NavigationManager NavManager { get; set; }
 
         [Inject]
-        ISoftwareProjectRepository SoftwareProjectRepo { get; set; }
+        ISoftwareProjectService SoftwareProjectService { get; set; }
 
         private SoftwareProject project;
 
@@ -29,7 +29,7 @@ namespace BlazorPersonalWebsite.Pages
 
             if (projectRef != null)
             {
-                project = await SoftwareProjectRepo.GetSoftwareProjectAsync(projectRef);
+                project = await SoftwareProjectService.GetSoftwareProjectAsync(projectRef);
             }
 
         }
