@@ -1,5 +1,5 @@
-﻿using BlazorPersonalWebsite.Models;
-using BlazorPersonalWebsite.Models.Interfaces;
+﻿using BlazorPersonalWebsite.Services;
+using BlazorPersonalWebsite.ViewModels;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
@@ -18,7 +18,7 @@ namespace BlazorPersonalWebsite.Pages
         NavigationManager NavManager { get; set; }
 
         [Inject]
-        IJobApplicationRepository JobApplicationRepo { get; set; }
+        IJobApplicationService JobApplicationService { get; set; }
 
         [Parameter] public EventCallback<string> OnAdd { get; set; }
 
@@ -27,11 +27,11 @@ namespace BlazorPersonalWebsite.Pages
 
         public void AddNewJobApplication()
         {
-            JobApplicationRepo.AddJobApplication(
-                new Models.JobApplicationCreateModel
+            JobApplicationService.AddJobApplicationAsync(
+                new JobApplicationCreateModel
                 {
                     JobApplicationRef = Guid.NewGuid().ToString(),
-                    AppliedDateTime = jobApplication.DateAppliedFor,
+                    AppliedDateTime = jobApplication.AppliedDateTime,
                     Description = jobApplication.Description,
                     Title = jobApplication.Title,
                 }); 

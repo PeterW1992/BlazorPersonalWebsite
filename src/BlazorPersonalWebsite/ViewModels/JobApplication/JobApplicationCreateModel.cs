@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
 namespace BlazorPersonalWebsite.ViewModels
 {
-    public class JobApplication
+    public class JobApplicationCreateModel
     {
         public string JobApplicationRef { get; set; }
 
@@ -13,6 +12,6 @@ namespace BlazorPersonalWebsite.ViewModels
 
         public string Description { get; set; }
 
-        public DateTime DateAppliedFor { get; set; }
+        public DateTime AppliedDateTime { get; set; }
     }
 }

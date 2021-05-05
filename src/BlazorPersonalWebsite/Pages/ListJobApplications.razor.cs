@@ -1,4 +1,4 @@
-﻿using BlazorPersonalWebsite.Models.Interfaces;
+﻿using BlazorPersonalWebsite.Services;
 using BlazorPersonalWebsite.ViewModels;
 using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
@@ -9,33 +9,24 @@ namespace BlazorPersonalWebsite.Pages
 {
     public partial class ListJobApplications
     {
-        private List<JobApplication> jobApplications;
+        private IEnumerable<JobApplication> jobApplications;
 
         [Inject]
-        IJobApplicationRepository JobApplicationRepo { get; set; }
+        IJobApplicationService JobApplicationService { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
             RefreshList();
         }
 
-        public void RefreshList()
+        public async void RefreshList()
         {
-            jobApplications = JobApplicationRepo
-                .ListJobApplications()
-                .Select(ja => new JobApplication
-                {
-                    JobApplicationRef = ja.JobApplicationRef,
-                    DateAppliedFor = ja.DateApplied,
-                    Description = ja.Description,
-                    Title = ja.Title
-                })
-                .ToList();
+            jobApplications = await JobApplicationService.GetJobApplicationsAsync();
         }
 
-        public bool RemoveJobApplication(string applicationRef)
+        public async Task<bool> RemoveJobApplication(string applicationRef)
         {
-            bool result = JobApplicationRepo.RemoveJobApplication(applicationRef);
+            bool result = await JobApplicationService.RemoveJobApplicationAsync(applicationRef);
             RefreshList();
             return result;
         }

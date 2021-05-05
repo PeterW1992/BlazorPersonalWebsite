@@ -14,10 +14,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BlazorPersonalWebsite.DataAccess\BlazorPersonalWebsite.DataAccess.csproj" />
-    <ProjectReference Include="..\BlazorPersonalWebsite.EntityFramework\BlazorPersonalWebsite.EntityFramework.csproj" />
-    <ProjectReference Include="..\BlazorPersonalWebsite.Models\BlazorPersonalWebsite.Models.csproj" />
-  </ItemGroup>
-
 </Project>
