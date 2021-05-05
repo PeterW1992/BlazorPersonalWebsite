@@ -1,4 +1,5 @@
-﻿using BlazorPersonalWebsite.ViewModels;
+﻿using BlazorPersonalWebsite.Config;
+using BlazorPersonalWebsite.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,9 @@ namespace BlazorPersonalWebsite.Services
     {
         private readonly HttpClient _httpClient;
 
-        public SoftwareProjectService(HttpClient httpClient)
+        public SoftwareProjectService(HttpClient httpClient, RestApiConfig restApiConfig)
         {
+            httpClient.BaseAddress = new Uri(restApiConfig.RestApiBaseUrl);
             this._httpClient = httpClient;
         }
 
