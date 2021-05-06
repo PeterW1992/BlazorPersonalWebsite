@@ -96,7 +96,25 @@
     <Content Update="wwwroot\images\woodwork-images\bird-table\bird-table.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\woodwork-images\raised-garden-bed\all-in-view.jpg">
+    <Content Update="wwwroot\images\woodwork-images\raised-garden-beds\all-in-view.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\woodwork-images\raised-garden-beds\large-side.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\woodwork-images\raised-garden-beds\small-close-1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\woodwork-images\raised-garden-beds\small-close-2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\woodwork-images\raised-garden-beds\small-far-1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\woodwork-images\raised-garden-beds\small-far-2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\woodwork-images\side-gate\gate-hung.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\images\woodwork-images\side-gate\sidegate-unhung.jpg">
