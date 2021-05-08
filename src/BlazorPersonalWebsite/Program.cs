@@ -16,14 +16,16 @@ namespace BlazorPersonalWebsite
 
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services
-                .AddScoped(sp => new HttpClient())
-                .AddScoped(sp => new RestApiConfig
-                {
-                    RestApiBaseUrl = builder.Configuration
+            var restApiConfig = new RestApiConfig
+            {
+                RestApiBaseUrl = builder.Configuration
                         .GetSection("RestApiConfig")
                         .GetSection("RestApiBaseUrl").Value
-                })
+            };
+
+            builder.Services
+                .AddScoped(sp => new HttpClient { BaseAddress = new Uri(restApiConfig.RestApiBaseUrl) })
+                .AddScoped(sp => restApiConfig)
                 .AddScoped<IJobApplicationService, JobApplicationService>()
                 .AddScoped<ISoftwareProjectService, SoftwareProjectService>()
                 .AddScoped<IWoodworkProjectService, WoodworkProjectService>();

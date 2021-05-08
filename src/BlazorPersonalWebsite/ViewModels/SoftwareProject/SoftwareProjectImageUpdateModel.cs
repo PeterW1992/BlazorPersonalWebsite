@@ -4,10 +4,8 @@ using System.Text;
 
 namespace BlazorPersonalWebsite.ViewModels
 {
-    public class SoftwareProjectImage
+    public class SoftwareProjectImageUpdateModel
     {
-        public int SoftwareProjectImageId { get; set; }
-
         public string ImageRef { get; set; }
 
         public string ImageUrl { get; set; }

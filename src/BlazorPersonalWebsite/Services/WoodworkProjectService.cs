@@ -1,4 +1,5 @@
-﻿using BlazorPersonalWebsite.ViewModels;
+﻿using BlazorPersonalWebsite.Config;
+using BlazorPersonalWebsite.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace BlazorPersonalWebsite.Services
 
         public async Task<WoodworkProject> GetWoodworkProjectAsync(string projectRef)
         {
-            var response = await _httpClient.GetAsync($"woodworkProjects?projectRef={projectRef}");
+            var response = await _httpClient.GetAsync($"woodworkProjects/{projectRef}");
 
             string responseStr = await response.Content.ReadAsStringAsync();
 

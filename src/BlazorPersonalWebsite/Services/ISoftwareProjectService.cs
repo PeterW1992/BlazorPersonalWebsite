@@ -11,5 +11,7 @@ namespace BlazorPersonalWebsite.Services
         Task<IEnumerable<SoftwareProject>> GetSoftwareProjectsAsync();
 
         Task<SoftwareProject> GetSoftwareProjectAsync(string projectRef);
+
+        Task<SoftwareProject> UpdateSoftwareProjectAsync(SoftwareProjectUpdateModel updateModel);
     }
 }

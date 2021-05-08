@@ -1,0 +1,56 @@
+﻿@page "/editsoftwareproject"
+
+@if (project == null)
+{
+    <label>Error display product!</label>
+}
+else
+{
+    <EditForm Model="@project">
+
+        <div>
+            <label>
+                Name:
+                <InputText id="projectName" @bind-Value="project.Name"></InputText>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Description:
+                <InputText id="projectDescription" @bind-Value="project.Description"></InputText>
+            </label>
+        </div>
+
+        <table class="table">
+            <tr>
+                <th>Image Ref</th>
+                <th>Image Url</th>
+                <th>Description</th>
+            </tr>
+            @foreach (var img in project.Images)
+            {
+                <tr>
+                    <td>
+                        @img.ImageRef
+                    </td>
+                    <td>
+                        <InputText id="imageUrl" @bind-Value="img.ImageUrl"></InputText>
+                    </td>
+                    <td>
+                        <InputText id="imageDescription" @bind-Value="img.Description"></InputText>
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <div>
+            <label>
+                Date Created:
+                <InputDate id="jobAppliedDate" @bind-Value="project.DateCreated"></InputDate>
+            </label>
+        </div>
+
+        <button type="submit" @onclick="UpdateSoftwareProject">Update</button>
+    </EditForm>
+}
