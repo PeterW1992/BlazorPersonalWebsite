@@ -40,6 +40,9 @@ else
                     <td>
                         <InputText id="imageDescription" @bind-Value="img.Description"></InputText>
                     </td>
+                    <td>
+                        <button id="deleteImage" @onclick="@(e => RemoveProjectImage(img.ImageRef))">Delete</button>
+                    </td>
                 </tr>
             }
         </table>
@@ -47,9 +50,32 @@ else
         <div>
             <label>
                 Date Created:
-                <InputDate id="jobAppliedDate" @bind-Value="project.DateCreated"></InputDate>
+                <InputDate id="createdDate" @bind-Value="project.DateCreated"></InputDate>
             </label>
         </div>
+
+        <div>
+            <label>
+                Image Ref:
+                <InputText id="imageRef" @bind-Value="newImage.ImageRef"></InputText>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Image Url:
+                <InputText id="imageUrl" @bind-Value="newImage.ImageUrl"></InputText>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Description:
+                <InputText id="imageDescription" @bind-Value="newImage.Description"></InputText>
+            </label>
+        </div>
+
+        <button type="button" @onclick="AddProjectImage">Add Image</button>
 
         <button type="submit" @onclick="UpdateSoftwareProject">Update</button>
     </EditForm>

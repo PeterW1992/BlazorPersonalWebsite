@@ -20,6 +20,8 @@ namespace BlazorPersonalWebsite.Pages
         ISoftwareProjectService SoftwareProjectService { get; set; }
 
         private SoftwareProjectUpdateModel project;
+        private SoftwareProjectImageUpdateModel newImage = new SoftwareProjectImageUpdateModel();
+
 
         protected override async Task OnInitializedAsync()
         {
@@ -61,6 +63,19 @@ namespace BlazorPersonalWebsite.Pages
         private async void UpdateSoftwareProject()
         {
             await SoftwareProjectService.UpdateSoftwareProjectAsync(project);
+        }
+
+        private async void RemoveProjectImage(string imageRef)
+        {
+            project.Images = project.Images.Where(img => img.ImageRef != imageRef).ToList();
+            //await SoftwareProjectService.
+        }
+
+        private async void AddProjectImage()
+        {
+            project.Images.Add(newImage);
+
+            newImage = new SoftwareProjectImageUpdateModel();
         }
     }
 }
